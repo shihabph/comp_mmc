@@ -1,0 +1,28 @@
+.custom_img{
+border: 3px solid rgb(236, 236, 236);
+width: 188px;
+height: 188px;
+}
+
+.name_deg{
+text-align: center;
+height: fit-content;
+background-color: #a78a7f;
+text-decoration: none;
+color: #fff;
+display: block;
+width: 188px !important;
+}
+
+.grid_emp>div>a:hover{
+text-decoration: none;
+}
+
+.grid_emp>div {
+      transition: transform .2s;
+}
+
+.grid_emp>div:hover {
+      transform: scale(1.05);
+      
+}

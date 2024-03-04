@@ -1,0 +1,59 @@
+.check {
+      background: linear-gradient(140deg, #f19700, #eb6700);
+      display: flex;
+      justify-content: center;
+      padding: 2em;
+      height: auto;
+}
+
+.check img {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      border-radius: 5px;
+      border: 10px solid white;
+}
+
+.check h5 {
+      margin: 0;
+      color: #fccb61;
+}
+
+#teachers_profile{
+width: 100%;
+font-size: 12px;;
+}
+#teachers_profile td:first-child {
+font-weight: 500;
+max-width: 5em;
+
+      /* CSS properties for the first td element inside #parent-id */
+}
+#teachers_profile td:nth-child(2) {
+      /* padding-left:5px; */
+}
+#teachers_profile td {
+      color: #fff;
+}
+
+
+
+.fixed_img {
+      width: 220px;
+      /* height: 220px; */
+      /* overflow: hidden; */
+}
+
+.new_hr {
+      /* #c45b00 */
+      margin-top: 5px !important;
+      border-bottom: 2px solid #ffb235;
+}
+
+.content_title_ht {
+      color: #a78a7f;
+}
+
+.content_body_ht {
+      text-align: justify;
+}
