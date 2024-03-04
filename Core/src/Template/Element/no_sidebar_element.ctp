@@ -97,6 +97,6 @@ echo $this->Blocks->get('script');
     echo $this->Js->writeBuffer();
     ?>
     <script>
-        $("title").html("Admission Payment");
+        $("title").html("Student Dashboard");
     </script>
 </body>

@@ -86,7 +86,7 @@
                         <tr>
                             <td>Masters or equivalent</td>
                             <td>Anatomy</td>
-                            <td>Bangabandhu Sheikh Mujib Medical University, Dhaka</td>
+                            <td>M Abdur Rahim Medical College, Dinajpur</td>
                             <td>MS Anatomy</td>
                             <td>2018</td>
                         </tr>

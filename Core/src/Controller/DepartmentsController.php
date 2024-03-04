@@ -43,6 +43,7 @@ class DepartmentsController extends AppController
         $employees = $employeeTable->find()
             ->enableAutoFields(true)
             ->enableHydration(false)
+            ->where(['employees_designation_id'=>3])
             ->order('RAND()')
             ->select([
                 'designation' => 'dsg.name'
@@ -58,6 +59,7 @@ class DepartmentsController extends AppController
             ->toArray();
         $this->set(compact('employees'));
     }
+
 
     protected function buildDepartmentTree($parentId, $children)
     {

@@ -13,6 +13,7 @@ $results = $data
     ->find()
     ->enableAutoFields(true)
     ->where(['asset_usages.foreign_key' => $this->Nodes->field('id')])
+    // ->where(['asset_usages.type' => null])
     ->select([
         'model' => 'ast.model',
         'extension' => 'ast.extension',
@@ -34,6 +35,8 @@ $results = $data
     ])
     ->toArray();
 ?>
+
+
 <?php if ($results[0]['type'] == 'pageBanner') { ?>
     <div class="node-body my-2">
         <?= $this->Layout->filter($this->Nodes->field('body')) ?>
@@ -58,17 +61,13 @@ $results = $data
 
                 iframe {
                     width: 100%;
-                    min-height: 842px;
+                    min-height: 500px;
                     border: 1px dotted #222222;
-                }
-
-                iframe body>img {
-                    width: 100% !important;
                 }
             </style>
             <?php
             foreach ($results as $key => $result) {
-                $download = $result['path'];
+                $download = $siteURL . $result['path'];
 
                 // Extension Matching and defining Icons
                 $imageExtensions = array('jpg', 'png', 'gif', 'webp');
@@ -85,6 +84,7 @@ $results = $data
                 } else {
                     $iconClass = 'fa fa-2x fa-paperclip';
                 }
+
             ?>
 
                 <table class="table">

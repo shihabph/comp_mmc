@@ -8,15 +8,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     </head>
     <body>
-        <h3 style="text-align: center;background-color: rgba(0, 0, 0, 0.2);padding: 10px;overflow-x:auto;font-colour: red;">Balance Sheet Report</h3>
+        <h3 style="text-align: center;background-color: rgba(0, 0, 0, 0.2);padding: 10px;overflow-x:auto;font-colour: red;">Balance Report</h3>
     <?php if (isset($credits)) { ?>
-        <div style="background-color: rgba(0, 0, 0, 0.2); padding: 10px; margin-top: 10px; overflow-x:auto;">
-            <table class="table table-bordered table-striped">
-            <p style="position: relative;">
-                Date Between <?php echo $date1; ?> to <?php echo $date2; ?>
-                <span style="position: absolute; right: 0;">Report Time:  <?php echo $date=date('d-m-Y h:i A'); ?></span>
-            </p>
+        <div style="background-color: rgba(0, 0, 0, 0.2); padding: 10px; margin-top: 50px; overflow-x:auto;">
 
+            <table class="table table-bordered table-striped">
+                <h6 style="float: right;">Date Between <?php echo $date1; ?> to <?php echo $date2; ?> </h6>
                 <thead class="thead-dark">
                     <tr>
                         <th style="text-align: center;">Serial No</th>

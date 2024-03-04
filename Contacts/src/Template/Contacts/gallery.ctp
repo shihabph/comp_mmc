@@ -20,7 +20,7 @@
                 <div class="col-md-4 col-6">
                     <div class="gallery_area">
                         <div class="wrapper">
-                            <a href="<?php echo $this->Url->build(['controller' => 'Gallery', 'action' => 'viewPhotos', $album['album_id']]); ?>">
+                            <a href="<?php echo $this->Url->build(['controller' => 'Contacts', 'action' => 'viewPhotos', $album['album_id']]); ?>">
                                 <div class="img_area" data-album-id="<?php echo $album['album_id'] ?>" style="background-image: url('<?= $path ?>')"></div>
                             </a>
                         </div>

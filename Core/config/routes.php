@@ -23,13 +23,6 @@ Router::prefix('admin', function (RouteBuilder $routeBuilder) {
     $routeBuilder->connect('/', $dashboardUrl);
 });
 
-Router::plugin('Croogo/Core', ['path' => '/'], function ($routes) {
-    $routes->prefix('', function ($routes) {
-        // Define your API routes here
-        $routes->connect('/cfGetFeeInfo', ['controller' => 'OnlinePayment', 'action' => 'cfGetFeeInfo']);
-    });
-});
-
 Router::plugin(
     'Croogo/Core',
     ['path' => '/'],
@@ -47,44 +40,10 @@ Router::plugin(
                 'controller' => 'Students',
                 'action' => 'add'
             ]);
-            $routeBuilder->connect('/students/promotion/', [
+            $routeBuilder->connect('/students/promote/', [
                 'controller' => 'Students',
-                'action' => 'promotion',
+                'action' => 'promote',
             ]);
-            $routeBuilder->connect('/students/promotionLog/', [
-                'controller' => 'Students',
-                'action' => 'promotionLog',
-            ]);
-            $routeBuilder->connect('/students/deletePromotion/*', [
-                'controller' => 'Students',
-                'action' => 'deletePromotion',
-            ]);
-            $routeBuilder->connect('/students/promotionTemplate/', [
-                'controller' => 'Students',
-                'action' => 'promotionTemplate',
-            ]);
-            $routeBuilder->connect('/students/addPromotionTemplate/', [
-                'controller' => 'Students',
-                'action' => 'addPromotionTemplate',
-            ]);
-            $routeBuilder->connect('/students/viewPromotionTemplate/*', [
-                'controller' => 'Students',
-                'action' => 'viewPromotionTemplate',
-            ]);
-            $routeBuilder->connect('/students/deletePromotionTemplate/*', [
-                'controller' => 'Students',
-                'action' => 'deletePromotionTemplate',
-            ]);
-            $routeBuilder->connect('/students/getTermForPromotionAjax/*', [
-                'controller' => 'Ajax',
-                'action' => 'getTermForPromotionAjax',
-            ]);
-
-            $routeBuilder->connect('/students/getSectionForPromotionAjax/*', [
-                'controller' => 'Ajax',
-                'action' => 'getSectionForPromotionAjax',
-            ]);
-
             $routeBuilder->connect('/students/import/', [
                 'controller' => 'Students',
                 'action' => 'import',
@@ -93,13 +52,9 @@ Router::plugin(
                 'controller' => 'Students',
                 'action' => 'edit',
             ]);
-            $routeBuilder->connect('/students/deleteCycle/*', [
+            $routeBuilder->connect('/students/delete/*', [
                 'controller' => 'Students',
-                'action' => 'deleteCycle',
-            ]);
-            $routeBuilder->connect('/students/delete_cycle/*', [
-                'controller' => 'Students',
-                'action' => 'deleteCycle',
+                'action' => 'delete',
             ]);
             $routeBuilder->connect('/students/getSectionAjax/*', [
                 'controller' => 'Ajax',
@@ -109,6 +64,7 @@ Router::plugin(
                 'controller' => 'Ajax',
                 'action' => 'getSectionAjax',
             ]);
+
             $routeBuilder->connect('/students/getSubjectAjax/*', [
                 'controller' => 'Ajax',
                 'action' => 'getSubjectAjax',
@@ -216,10 +172,6 @@ Router::plugin(
                 'controller' => 'Students',
                 'action' => 'tutionFees',
             ]);
-            $routeBuilder->connect('/students/promotion_list/*', [
-                'controller' => 'Students',
-                'action' => 'promotionList',
-            ]);
             $routeBuilder->connect('/students/data_settings/*', [
                 'controller' => 'Students',
                 'action' => 'dataSettings',
@@ -239,27 +191,6 @@ Router::plugin(
             $routeBuilder->connect('/students/number_fordo/*', [
                 'controller' => 'Students',
                 'action' => 'numberFordo',
-            ]);
-            $routeBuilder->connect('/students/getTermForPromotionAjax/*', [
-                'controller' => 'Ajax',
-                'action' => 'getTermForPromotionAjax',
-            ]);
-            $routeBuilder->connect('/students/getSectionForPromotionAjax/*', [
-                'controller' => 'Ajax',
-                'action' => 'getSectionForPromotionAjax',
-            ]);
-
-            $routeBuilder->connect('/students/payment_list/*', [
-                'controller' => 'Students',
-                'action' => 'paymentList',
-            ]);
-            $routeBuilder->connect('/students/add_payment/*', [
-                'controller' => 'Students',
-                'action' => 'addPayment',
-            ]);
-            $routeBuilder->connect('/students/add_edit_payment/*', [
-                'controller' => 'Students',
-                'action' => 'addeditPayment',
             ]);
 
             //Route for StaffsController @shihab
@@ -416,10 +347,6 @@ Router::plugin(
                 'controller' => 'Ajax',
                 'action' => 'getUserAjax',
             ]);
-            $routeBuilder->connect('/accounts/getPurposeAjax/*', [
-                'controller' => 'ajax',
-                'action' => 'getPurposeAjax'
-            ]);
             $routeBuilder->connect('/accounts/schoolFees/', [
                 'controller' => 'accounts',
                 'action' => 'schoolFees'
@@ -428,21 +355,13 @@ Router::plugin(
                 'controller' => 'accounts',
                 'action' => 'twoTakafund'
             ]);
-            $routeBuilder->connect('/accounts/getVouchersAjax/*', [
+            $routeBuilder->connect('/accounts/getMonthAjax/*', [
                 'controller' => 'ajax',
-                'action' => 'getVouchersAjax'
+                'action' => 'getMonthAjax'
             ]);
-            $routeBuilder->connect('/accounts/getMonthsForVoucherAjax/*', [
+            $routeBuilder->connect('/accounts/getPurposeAjax/*', [
                 'controller' => 'ajax',
-                'action' => 'getMonthsForVoucherAjax'
-            ]);
-            $routeBuilder->connect('/accounts/getPurposeMonthAjax/*', [
-                'controller' => 'Ajax',
-                'action' => 'getPurposeMonthAjax',
-            ]);
-            $routeBuilder->connect('/accounts/getMonthsForIndivisulVoucherAjax/*', [
-                'controller' => 'ajax',
-                'action' => 'getMonthsForIndivisulVoucherAjax'
+                'action' => 'getPurposeAjax'
             ]);
             $routeBuilder->connect('/accounts/getSectionAjax/*', [
                 'controller' => 'Ajax',
@@ -572,13 +491,9 @@ Router::plugin(
                 'controller' => 'Attendance',
                 'action' => 'index'
             ]);
-            $routeBuilder->connect('/attendance/deviceAttendence', [
+            $routeBuilder->connect('/attendance/device_attendence', [
                 'controller' => 'Attendance',
-                'action' => 'deviceAttendence'
-            ]);
-            $routeBuilder->connect('/attendance/deviceLog', [
-                'controller' => 'Attendance',
-                'action' => 'deviceLog'
+                'action' => 'device_attendence'
             ]);
             $routeBuilder->connect('/attendance/getCoursesAjax/*', [
                 'controller' => 'Attendance',
@@ -654,14 +569,6 @@ Router::plugin(
             $routeBuilder->connect('/employees', [
                 'controller' => 'Employees',
                 'action' => 'index'
-            ]);
-            $routeBuilder->connect('/ex-employees', [
-                'controller' => 'Employees',
-                'action' => 'exEmployees'
-            ]);
-            $routeBuilder->connect('/inactive_employees', [
-                'controller' => 'Employees',
-                'action' => 'inactiveEmployees'
             ]);
             $routeBuilder->connect('/employees/add', [
                 'controller' => 'Employees',
@@ -749,45 +656,13 @@ Router::plugin(
                 'controller' => 'accounts',
                 'action' => 'Transactions'
             ]);
-            $routeBuilder->connect('/accounts/add_debit/', [
+            $routeBuilder->connect('/accounts/add_transaction/', [
                 'controller' => 'accounts',
-                'action' => 'addDebit'
-            ]);
-            $routeBuilder->connect('/accounts/add_credit/', [
-                'controller' => 'accounts',
-                'action' => 'addCredit'
-            ]);
-            $routeBuilder->connect('/accounts/credit_list/', [
-                'controller' => 'accounts',
-                'action' => 'creditList'
-            ]);
-            $routeBuilder->connect('/accounts/debit_list/', [
-                'controller' => 'accounts',
-                'action' => 'debitList'
-            ]);
-            $routeBuilder->connect('/accounts/getMonthsFrromSessionAjax/*', [
-                'controller' => 'Ajax',
-                'action' => 'getMonthsFrromSessionAjax',
+                'action' => 'addTransaction'
             ]);
             $routeBuilder->connect('/accounts/edit_transaction/*', [
                 'controller' => 'accounts',
                 'action' => 'editTransaction'
-            ]);
-            $routeBuilder->connect('/accounts/editDebit/*', [
-                'controller' => 'accounts',
-                'action' => 'editDebit'
-            ]);
-            $routeBuilder->connect('/accounts/editCredit/*', [
-                'controller' => 'accounts',
-                'action' => 'editCredit'
-            ]);
-            $routeBuilder->connect('/accounts/deleteVoucher/*', [
-                'controller' => 'accounts',
-                'action' => 'deleteVoucher'
-            ]);
-            $routeBuilder->connect('/accounts/editUnpaidVouchers/*', [
-                'controller' => 'accounts',
-                'action' => 'editUnpaidVouchers'
             ]);
             $routeBuilder->connect('/accounts/delete_transaction/*', [
                 'controller' => 'accounts',
@@ -797,25 +672,17 @@ Router::plugin(
                 'controller' => 'accounts',
                 'action' => 'report'
             ]);
-            $routeBuilder->connect('/accounts/transactionStatement/', [
+            $routeBuilder->connect('/accounts/credit_report/', [
                 'controller' => 'accounts',
-                'action' => 'transactionStatement'
+                'action' => 'creditReport'
             ]);
-            $routeBuilder->connect('/accounts/paymentDetails/', [
+            $routeBuilder->connect('/accounts/debit_report/', [
                 'controller' => 'accounts',
-                'action' => 'paymentDetails'
+                'action' => 'debitReport'
             ]);
             $routeBuilder->connect('/accounts/balance_report/', [
                 'controller' => 'accounts',
                 'action' => 'balanceReport'
-            ]);
-            $routeBuilder->connect('/accounts/voucherStatement/', [
-                'controller' => 'accounts',
-                'action' => 'voucherStatement'
-            ]);
-            $routeBuilder->connect('/accounts/dueReport/', [
-                'controller' => 'accounts',
-                'action' => 'dueReport'
             ]);
             $routeBuilder->connect('/accounts/banks/deleted_banks/*', [
                 'controller' => 'accounts',
@@ -837,6 +704,10 @@ Router::plugin(
                 'controller' => 'accounts',
                 'action' => 'restorePurposes'
             ]);
+            $routeBuilder->connect('/accounts/transactions/restore_transactions/*', [
+                'controller' => 'accounts',
+                'action' => 'restoreTransactions'
+            ]);
             $routeBuilder->connect('/accounts/fees_khat_settings/', [
                 'controller' => 'accounts',
                 'action' => 'feesKhatSettings'
@@ -844,18 +715,6 @@ Router::plugin(
             $routeBuilder->connect('/accounts/multiple_fees_khat/', [
                 'controller' => 'accounts',
                 'action' => 'multipleFeesKhat'
-            ]);
-            $routeBuilder->connect('/accounts/indivisul_voucher/', [
-                'controller' => 'accounts',
-                'action' => 'indivisulVoucher'
-            ]);
-            $routeBuilder->connect('/accounts/voucher_generate/', [
-                'controller' => 'accounts',
-                'action' => 'voucherGenerate'
-            ]);
-            $routeBuilder->connect('/accounts/unpaidVouchers/', [
-                'controller' => 'accounts',
-                'action' => 'unpaidVouchers'
             ]);
             $routeBuilder->connect('/accounts/additional_fees/', [
                 'controller' => 'accounts',
@@ -873,17 +732,17 @@ Router::plugin(
                 'controller' => 'accounts',
                 'action' => 'generateAdditionalFees'
             ]);
-            $routeBuilder->connect('/accounts/individualFees/', [
+            $routeBuilder->connect('/accounts/edit_generated_additionals/', [
                 'controller' => 'accounts',
-                'action' => 'individualFees'
+                'action' => 'editGeneratedAdditionals'
+            ]);
+            $routeBuilder->connect('/accounts/getSessionMonthsAjax/*', [
+                'controller' => 'ajax',
+                'action' => 'getSessionMonthsAjax'
             ]);
             $routeBuilder->connect('/accounts/getOnlySessionMonthsAjax/*', [
                 'controller' => 'ajax',
                 'action' => 'getOnlySessionMonthsAjax'
-            ]);
-            $routeBuilder->connect('/moneyRecpit/*', [
-                'controller' => 'accounts',
-                'action' => 'moneyRecpit'
             ]);
 
             //Route for HrsController @shihab
@@ -1301,119 +1160,13 @@ Router::plugin(
         });
     }
 );
+
 Router::plugin(
     'Croogo/Core',
     ['path' => '/'],
     function (RouteBuilder $routeBuilder) {
         $routeBuilder->setExtensions(['json']);
         $routeBuilder->applyMiddleware('csrf');
-
-        $routeBuilder->connect('/employees/*', [
-            'controller' => 'Employees',
-            'action' => 'employeesList'
-        ]);
-        /*
-              $routeBuilder->connect('/cfGetFeeInfo/', [
-              'controller' => 'OnlinePayment',
-              'action' => 'cfGetFeeInfo'
-              ]);
-
-              $routeBuilder->connect('/cfPaymentConfirmation/', [
-              'controller' => 'OnlinePayment',
-              'action' => 'cfPaymentConfirmation'
-              ]);
-             *
-             */
-
-        $routeBuilder->connect('/employees/profile/*', [
-            'controller' => 'Employees',
-            'action' => 'employeesProfile'
-        ]);
-        $routeBuilder->connect('/gallery/*', [
-            'controller' => 'Gallery',
-            'action' => 'gallery'
-        ]);
-        $routeBuilder->connect('/gallery/view/*', [
-            'controller' => 'Gallery',
-            'action' => 'viewPhotos'
-        ]);
-        $routeBuilder->connect('/student_dashboard', [
-            'controller' => 'Students',
-            'action' => 'studentDashboard'
-        ]);
-        $routeBuilder->connect('/userLoginAjax', [
-            'controller' => 'Students',
-            'action' => 'userLoginAjax'
-        ]);
-
-        $routeBuilder->connect('/logout', [
-            'controller' => 'Students',
-            'action' => 'userLogout'
-        ]);
-        $routeBuilder->connect('/student_dashboard/getYearlyAttandanceAjax', [
-            'controller' => 'Students',
-            'action' => 'getYearlyAttandanceAjax'
-        ]);
-        $routeBuilder->connect('/student_dashboard/view_result/*', [
-            'controller' => 'Students',
-            'action' => 'viewResult'
-        ]);
-        $routeBuilder->connect('/tform/*', [
-            'controller' => 'Admission',
-            'action' => 'tform'
-        ]);
-        $routeBuilder->connect('/index/*', [
-            'controller' => 'Admission',
-            'action' => 'index'
-        ]);
-        $routeBuilder->connect('/admissionform/*', [
-            'controller' => 'Admission',
-            'action' => 'admissionform'
-        ]);
-        $routeBuilder->connect('/payment/*', [
-            'controller' => 'Admission',
-            'action' => 'payment'
-        ]);
-        $routeBuilder->connect('/admitcard', [
-            'controller' => 'Admission',
-            'action' => 'admitcard'
-        ]);
-        $routeBuilder->connect('/admit_search', [
-            'controller' => 'Admission',
-            'action' => 'admitSearch'
-        ]);
-        $routeBuilder->connect('/search_student/*', [
-            'controller' => 'Search',
-            'action' => 'searchStudent'
-        ]);
-        $routeBuilder->connect('/sid_search/*', [
-            'controller' => 'Search',
-            'action' => 'sidSearch'
-        ]);
-        $routeBuilder->connect('/two_taka_search/*', [
-            'controller' => 'Search',
-            'action' => 'twoTakaSearch'
-        ]);
-        $routeBuilder->connect('/Ajax/getCodeAjax', [
-            'controller' => 'Ajax',
-            'action' => 'getCodeAjax'
-        ]);
-        $routeBuilder->connect('/Ajax/getSubjectAjax', [
-            'controller' => 'Ajax',
-            'action' => 'getSubjectAjax'
-        ]);
-        $routeBuilder->connect('/Ajax/getReligionSubjectAjax', [
-            'controller' => 'Ajax',
-            'action' => 'getReligionSubjectAjax'
-        ]);
-        $routeBuilder->connect('/Ajax/getSectionAjax', [
-            'controller' => 'Ajax',
-            'action' => 'getSectionAjax'
-        ]);
-        $routeBuilder->connect('/Ajax/getLevelSectionAjax', [
-            'controller' => 'Ajax',
-            'action' => 'getLevelSectionAjax'
-        ]);
 
         $routeBuilder->connect('/departments', [
             'controller' => 'Departments',

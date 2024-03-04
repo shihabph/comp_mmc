@@ -6,7 +6,7 @@ $user = TableRegistry::getTableLocator()->get('employee');
 $users = $user->find()
     ->enableAutoFields(true)
     ->enableHydration(false)
-    ->order(['CAST(employee_order AS SIGNED)' => 'ASC'])
+    ->order(['CAST(employee_order AS SIGNED)' => 'DESC'])
     ->where(['featured' => '1'])
     ->select([
         'designation_name' => "d.name",

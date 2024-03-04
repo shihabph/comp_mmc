@@ -24,5 +24,14 @@ Nav::add('sidebar', 'media', [
                 'action' => 'index',
             ],
         ],
+        // 'file_manager' => [
+        //     'title' => __d('croogo', 'File Manager'),
+        //     'url' => [
+        //         'prefix' => 'admin',
+        //         'plugin' => 'Croogo/FileManager',
+        //         'controller' => 'FileManager',
+        //         'action' => 'browse',
+        //     ],
+        // ],
     ],
 ]);

@@ -1,17 +1,17 @@
 <?php
 
-use Croogo\Core\Controller\StudentsController;
+use Croogo\Contacts\Controller\ContactsController;
 
-$contactsController = new StudentsController();
+$contactsController = new ContactsController();
 $sessionData  = $contactsController->sessionStudent();
 $siteURL = $this->Url->build([
-    "plugin" => "Croogo/Core",
-    "controller" => "Students",
+    "plugin" => "Croogo/Contacts",
+    "controller" => "Contacts",
     "action" => "studentDashboard",
 ]);
 $logoutURL = $this->Url->build([
-    "plugin" => "Croogo/Core",
-    "controller" => "Students",
+    "plugin" => "Croogo/Contacts",
+    "controller" => "Contacts",
     "action" => "userLogout",
 ]);
 if (isset($sessionData)) { ?>

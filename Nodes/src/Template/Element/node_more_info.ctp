@@ -3,9 +3,9 @@
     $type = $typesForLayout[$this->Nodes->field('type')];
     $nodeTerms = $this->Nodes->nodeTermLinks();
 
-// if (!empty($this->Nodes->node->taxonomies)) {
-//     echo __d('croogo', 'Posted in') . ' ' . implode(', ', $nodeTerms);
-// }
+if (!empty($this->Nodes->node->taxonomies)) {
+    echo __d('croogo', 'Posted in') . ' ' . implode(', ', $nodeTerms);
+}
 
 if ($this->Nodes->commentsEnabled() && $this->getRequest()->getParam('action') !== 'view' && $type->comment_status) {
     if (($nodeTerms) && count($nodeTerms) > 0) {

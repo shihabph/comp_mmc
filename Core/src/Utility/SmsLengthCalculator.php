@@ -10,7 +10,7 @@ define('GSM_7BIT_ESC', "\x1b");
  * SMS length calculation class that detects if the message can be sent in GSM charset
  * or UCS-2 must be used. Also takes care of trailing escape character if a message is split
  * on extended character.
- *
+ * 
  * @author Jaanus Rõõmus <jaanus@roomus.ee>
  * @link http://messente.com/documentation/sms-length-calculator
  */
@@ -124,4 +124,7 @@ class SmsLengthCalculator {
         }
     }
 
+// getPartCount
 }
+
+// SmsLengthCalculator

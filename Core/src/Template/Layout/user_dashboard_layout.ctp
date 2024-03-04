@@ -39,7 +39,7 @@ $footerOption = Configure::read('Footer.select');
     <div id="fullHeight">
         <?php if ($siteTemplate == 1) {
 
-            echo $this->element('gov_template');
+            echo $this->element('school_user_dashboard');
         } else {
             echo $this->element('school_user_dashboard');
         }

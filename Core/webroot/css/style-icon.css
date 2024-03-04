@@ -1,3 +1,12 @@
+body {
+  font-family: "Muli", sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  font-size: 16px;
+  color: #333;
+}
+
 body:before {
   content: "";
   position: fixed;
@@ -282,10 +291,10 @@ h4,
 }
 
 .top-bar a {
-  color: #ffffff!important;
+  color: #ffffff;
 }
 
-.medical_logo {
+.logo {
   font-size: 24px;
   color: #ffffff;
   font-weight: 700;
@@ -293,12 +302,12 @@ h4,
 }
 
 @media (max-width: 991.98px) {
-  .medical_logo {
+  .logo {
     left: 20px;
   }
 }
 
-.medical_logo:hover {
+.logo:hover {
   color: #ffffff;
 }
 
@@ -867,7 +876,7 @@ h4,
   transition: .0s all ease;
 }
 
-#sticky-wrapper.is-sticky .sticky-nav .medical_logo {
+#sticky-wrapper.is-sticky .sticky-nav .logo {
   color: #000000 !important;
 }
 
@@ -1007,7 +1016,12 @@ h4,
 .bg-img,
 .bg-img>.container>.row {
   height: 100vh;
-  min-height: 450px;
+  min-height: 650px;
+}
+.node_page, .node_page_row{
+    height: 60vh!important;
+    min-height: 450px!important;
+    
 }
 
 @media (max-width: 767.98px) {

@@ -54,7 +54,7 @@ $headSign = Configure::read('Result.headSign');
                 <div class="admitExTop">
                     <div class="topMidEx">
 
-                        <span class="ExClass"><?php echo $terms . ' - ' . $student['session_name']; ?></span>
+                        <span class="ExClass"><?php echo $student['term'] . ' - ' . $student['session']; ?></span>
                         <big>
                             <span class="ExRegNo">ID : <?php echo $student['sid']; ?></span>
                             <span class="ExRollNo">Roll : <?php echo $student['roll']; ?></span>
@@ -68,12 +68,12 @@ $headSign = Configure::read('Result.headSign');
                             <span class="infoTitleEx">Student's Name</span><i>:</i><span class="infoNameEx"><?php echo $student['name']; ?></span>
                         </div>
                         <div class="admitInfoEx newInfoEx">
-                            <span class="infoTitleExNew">Class</span><i>:</i><span class="infoNameExNew"><?php echo $student['level_name']; ?></span>
-                            <span class="infoTitleExNew">Section </span><i>:</i><span class="infoNameExNew"><?php echo $student['section_name']; ?></span>
-                            <span class="infoTitleExNew">Shift</span><i>:</i><span class="infoNameExNew"><?php echo $student['shift_name']; ?></span>
+                            <span class="infoTitleExNew">Class</span><i>:</i><span class="infoNameExNew"><?php echo $student['class']; ?></span>
+                            <span class="infoTitleExNew">Section </span><i>:</i><span class="infoNameExNew"><?php echo $student['section']; ?></span>
+                            <span class="infoTitleExNew">Shift</span><i>:</i><span class="infoNameExNew"><?php echo $student['shift']; ?></span>
                         </div>
                         <div class="admitInfoEx newInfoEx">
-                            <span class="infoTitleExNew">Working Days</span><i>:</i><span class="infoNameExNew"><?php echo $total; ?></span>
+                            <span class="infoTitleExNew">Working Days</span><i>:</i><span class="infoNameExNew"><?php echo $workingDays; ?></span>
                             <span class="infoTitleExNew">Presence</span><i>:</i><span class="infoNameExNew">
                                 <?php
                                 echo $student['count'] . ' Days';
@@ -81,7 +81,9 @@ $headSign = Configure::read('Result.headSign');
                             </span>
                             <span class="infoTitleExNew">Percentage</span><i>:</i><span class="infoNameExNew">
                                 <?php
-                                $new_percentage = number_format($student['percentage'], 2, '.', '');        //($sumWorkingday / 100) * $sumAttendence;
+                                $sumAttendence = $student['count'];
+                                $new_percentage = ($sumAttendence * 100) / $workingDays;
+                                $new_percentage = number_format($new_percentage, 2, '.', '');        //($sumWorkingday / 100) * $sumAttendence;
                                 echo $new_percentage . ' %';
                                 ?>
                             </span>

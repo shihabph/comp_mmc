@@ -28,10 +28,10 @@ $get_nodes = TableRegistry::getTableLocator()->get('nodes');
 $nodes = $get_nodes->find()
     ->enableAutoFields(true)
     ->enableHydration(false)
-    ->where(['status' => 1])
-    ->order(['publish_start' => 'DESC']) // Numerical sort using order "Numerical" value
+    ->order(['CAST(nodes.id AS SIGNED)' => 'DESC']) // Numerical sort using order "Numerical" value
     ->toArray();
 ?>
+
 
 <div class="row px-2 box-node-row">
     <?php
@@ -60,14 +60,14 @@ $nodes = $get_nodes->find()
                             <img src="<?= $path ?>" alt="<?= $box['box_image'] ?>">
                         <?php } ?>
                     </div>
-                    <div class="col-md-8 pl-0">
+                    <div class="col-md-8">
                         <ul class="box_node_list">
                             <?php
                             $nodeCount = 0;
                             foreach ($nodes as $node) {
                                 if ($node['type'] == $blockAlias) {
                                     if ($nodeCount < $nodePerBox) { ?>
-                                        <li> <a href="<?= $siteURL . $node['type'] . '/' . $node['slug'] ?>">
+                                        <li> <a href="<?= $siteURL . $node['type'] . '/' . $node['slug'] ?>"><i class="text-green fa fa-caret-right"></i>
                                                 <?= $node['title'] ?></a></li>
                             <?php $nodeCount++;
                                     } else {
@@ -79,7 +79,7 @@ $nodes = $get_nodes->find()
 
                     </div>
                     <div class="text-right w-100 pr-3 see_more_node">
-                        <a href="<?= $siteURL . $block['alias'] ?>">সবগুলো জানতে <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i> </a>
+                        <a href="<?= $siteURL . $block['alias'] ?>">More</a>
                     </div>
                 </div>
             </div>

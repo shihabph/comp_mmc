@@ -3,7 +3,6 @@
 use Cake\Core\Configure;
 
 $siteTitle = Configure::read('Site.title');
-$siteSortForm = Configure::read('Site.sortForm');
 $instituteName = Configure::read('Site.institute');
 $siteIntro = Configure::read('Site.Intro');
 $siteLogo = Configure::read('Site.Logo');
@@ -19,23 +18,23 @@ $siteTemplate = Configure::read('Site.template');
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?= $siteSortForm ?> - Home</title>
-    <link rel="canonical" href="./">
+    <title><?= $siteTitle ?> - Home</title>
+    <link rel="canonical" href="https://bsmmc.edu.bd/">
     <meta name="robots" content="index, follow">
-    <meta name="generator" content="TechPlexus (http://tech-plexus.com)">
-    <meta name="web-author" content="TechPlexus (http://tech-plexus.com)">
+    <meta name="generator" content="MarkCite (http://markcite.com)">
+    <meta name="web-author" content="MarkCite (http://markcite.com)">
     <meta name="description" content="M Abdur Rahim Medical College, Dinajpur (MARMC) (Bengali: এম আব্দুর রহিম মেডিকেল কলেজ), formerly known as Dinajpur Medical College, is one of the best government medical colleges in Bangladesh.">
     <meta name="keywords" content="MARMC, M Abdur Rahim Medical College, এম আব্দুর রহিম মেডিকেল কলেজ, Dinajpur">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="MARMC Official Website">
     <meta property="og:description" content="M Abdur Rahim Medical College, Dinajpur (MARMC) (Bengali: এম আব্দুর রহিম মেডিকেল কলেজ), formerly known as Dinajpur Medical College, is one of the best government medical colleges in Bangladesh.">
-    <meta property="og:url" content="./">
+    <meta property="og:url" content="//bsmmc.edu.bd/">
     <meta property="og:site_name" content="MARMC">
     <meta property="og:image" content="https://dl.dropboxusercontent.com/s/ab4rq32nhux4kwy/bsmmc_feature.jpg?dl=0">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="675">
-    <meta property="article:publisher" content="./">
+    <meta property="article:publisher" content="//bsmmc.edu.bd/">
     <link rel="icon" href="./assets/img/bsmmc_logo_en.png">
     <meta property="article:published_time" content="">
     <meta property="article:modified_time" content="">
@@ -47,13 +46,13 @@ $siteTemplate = Configure::read('Site.template');
             "@context": "https://schema.org",
             "@graph": [{
                 "@type": "CollegeOrUniversity",
-                "@id": "https:./#CollegeorUniversity",
+                "@id": "https://bsmmc.edu.bd/#CollegeorUniversity",
                 "name": "M Abdur Rahim Medical College",
                 "sameAs": [
                     "https://en.wikipedia.org/wiki/Bangabandhu_Sheikh_Mujib_Medical_College",
                     "https://g.page/MARMC",
                 ],
-                "url": "https:./",
+                "url": "https://bsmmc.edu.bd/",
                 "telephone": "+88063161744",
                 "logo": {
                     "@type": "ImageObject",
@@ -63,11 +62,18 @@ $siteTemplate = Configure::read('Site.template');
                     "@type": "PostalAddress",
                     "addressLocality": "West Khabashpur",
                     "addressRegion": "Dinajpur",
-                    "postalCode": "5200"
+                    "postalCode": "7800"
                 }
             }]
         }
     </script>
+    <style>
+        <?php if ($siteTemplate == 999) { ?>.site-nav {
+            position: absolute;
+        }
+
+        <?php } ?>
+    </style>
 </head>
 
 <body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0" data-new-gr-c-s-check-loaded="14.1145.0" data-gr-ext-installed="">

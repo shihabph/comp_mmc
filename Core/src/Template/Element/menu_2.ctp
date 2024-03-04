@@ -136,7 +136,7 @@ $submenu_text_color = Configure::read('Menu.submenu_text_color');
             position: relative;
         }
 
-        #menu-wrap * {
+        #menu-wrap* {
             box-sizing: border-box;
         }
 

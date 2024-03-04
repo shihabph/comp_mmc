@@ -104,7 +104,6 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Voucher No</th>
-                        <th>Name</th>
                         <th>Date</th>
                         <th>Amount</th>
                     </tr>
@@ -116,7 +115,6 @@
                     ?>
                         <tr class="single_row">
                             <td><?php echo $student['voucher'];  ?></td>
-                            <td><?php echo $student['name'];  ?></td>
                             <td><?php echo $student['date'];  ?></td>
                             <td><?php echo $student['amount']; ?></td>
 

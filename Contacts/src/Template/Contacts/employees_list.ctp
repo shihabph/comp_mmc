@@ -20,7 +20,7 @@
     <div class="row mt-3 grid_emp">
         <?php foreach ($employees as $employee) { ?>
             <div class="col-md-4 teachers col-6 mb-4 ">
-                <a href="<?php echo $this->Url->build(['controller' => 'Employees', 'action' => 'employeesProfile', $employee['employee_id']]); ?>">
+                <a href="<?php echo $this->Url->build(['controller' => 'Contacts', 'action' => 'employeesProfile', $employee['employee_id']]); ?>">
                     <?php echo $this->Html->image('/webroot/uploads/employee_images/regularSize/' . $employee['image_name'], ['alt' => $employee['employee_name'], 'class' => 'custom_img']); ?>
                     <span class="name_deg  pt-2 pb-4 px-2">
                         <?= $employee['employee_name'] ?><br>

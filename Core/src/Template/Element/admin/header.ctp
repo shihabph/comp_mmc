@@ -20,8 +20,8 @@ function getSettingsKey($key)
 }
 
 // Get the SMS count value
-$key = 'SMS.SMS_Credit';
-$smsCredit = getSettingsKey('SMS.SMS_Credit');
+$key = 'SMS Credit';
+$smsCredit = getSettingsKey('SMS Credit');
 
 ?>
 

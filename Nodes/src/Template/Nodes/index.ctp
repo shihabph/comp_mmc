@@ -1,33 +1,23 @@
 <?php
-
-use Cake\Core\Configure;
-
 if (isset($type)) :
     $this->assign('title', $type->title);
 endif;
-$nodeTopBg = Configure::read('Site.list_node_top');
-$nodeTopText = Configure::read('Site.list_node_text');
-$siteTemplate = Configure::read('Site.template');
-
 ?>
 <style>
     .custom_thead {
-        background: <?= $nodeTopBg ?>;
-        color: <?= $nodeTopText ?>;
-    }
-
-    .node_items {
-        line-height: normal;
+        background: #2C3F33;
+        color: #fff;
     }
 </style>
-
-
+<div class="untree_co-hero overlay" style="background-color:#184aad; height: 150px!important; min-height: 150px!important;">
+</div>
 <div class="text-center mt-5">
-    <h2 style="text-transform:capitalize">
+    <h2>
         All <?= $type->title ?>
     </h2>
 </div>
 <div class="container nodes mt-5">
+
     <!-- Bootstrap Table for Tabular  View Notice -->
     <table class="table">
         <thead class="custom_thead">
@@ -47,12 +37,14 @@ $siteTemplate = Configure::read('Site.template');
             </tbody>
         <?php } ?>
 
-        <tbody>
-            <?php foreach ($nodes as $node) :
-                $this->Nodes->set($node);
-                $dateObject = $this->Nodes->field('publish_start'); // Assuming $array is the given array
-                $dateWithoutTime = $dateObject->format('Y-m-d');
-            ?>
+        <?php
+        foreach ($nodes as $node) :
+            $this->Nodes->set($node);
+            $dateObject = $this->Nodes->field('publish_start'); // Assuming $array is the given array
+            $dateWithoutTime = $dateObject->format('Y-m-d');
+        ?>
+
+            <tbody>
                 <tr>
                     <td style="white-space: nowrap;"><?= $dateWithoutTime ?></td>
                     <td>
@@ -61,9 +53,8 @@ $siteTemplate = Configure::read('Site.template');
                     </td>
                     <td><?php echo $this->Html->link('view', $this->Nodes->field('url')->getUrl(), ['target' => '_blank']) ?></td>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
 </div>
+<?php endforeach; ?>
+</table>
 <?= $this->element('pagination', compact('nodes', 'type')) ?>
 </div>

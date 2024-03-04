@@ -1,67 +1,47 @@
-<?php
-
-use Cake\Core\Configure;
-
-$instituteName = Configure::read('Result.instituteName');
-$instituteLogo = Configure::read('Result.instituteLogo');
-$watermarkLogo = Configure::read('Result.watermarkLogo');
-$borderImage = Configure::read('Result.borderImage');
-$headerFontFamily = Configure::read('Result.headerFontFamily');
-$headerFontCDN = Configure::read('Result.headerFontCDN');
-$headSign = Configure::read('Result.headSign');
-
-?>
-
-<?= $headerFontCDN ?>
-
 <body class="scms-result-print" style="">
+
     <?php foreach ($students as $student) { ?>
-    <div class="wraperResult watermarked" id="borderImg" style="border-image: url('<?= $this->Url->image($borderImage) ?>') 20 round;" data-watermark="<?= $instituteName ?>">
+    <div class="wraperResult" style="margin: 0 auto;">
         <div class="resHdr">
-            <div class="resLogo text-left">
-                    <?php echo $this->Html->image($instituteLogo, ['alt' => 'logo']); ?>
+            <div class="resLogo">
+                    <?php echo $this->Html->image('/webroot/uploads/result/logo.png', ['alt' => 'logo']); ?>
             </div>
             <div class="schoolIdentity">
-                <p class="text-center mb-0" style="font-family: <?= $headerFontFamily ?>">
-                        <?= $instituteName ?>
-                </p>
-                <div class="overlays">
-                    <div class="textOverlay" style="border-image: url('<?= $this->Url->image($borderImage) ?>') 18 round;">
-                        <p class="title_exam"> <?php echo $exam_title[0]; ?></p>
-                        <p class="title_exam_2"> <?php echo $exam_title[1]; ?></p>
-                    </div>
+                    <?php echo $this->Html->image('/webroot/uploads/result/school-title.png', ['alt' => 'schoolIdentity']); ?>
+                <div class="textOverlay">
+                    <p class="title_exam"> <?php echo $exam_title[0]; ?></p>
+                    <p class="title_exam_2"> <?php echo $exam_title[1]; ?></p>
                 </div>
-                <!-- end of hdrText -->
+
+
+                <div class="hdrText">
+                </div><!-- end of hdrText -->
             </div><!-- end of schoolIdentity -->
         </div><!-- end of resHdr -->
-
 
         <div class="resContainer">
             <div class="resTophdr">
                 <div class="restopleft">
 
                     <div><b> <?php echo $student['name']; ?> </b></div>
-                    <div><span>FATHER</span><i>: </i><em> <?php echo $student['guardians']['father']['name']; ?></em></div>
-                    <div><span>MOTHER</span><i>: </i><em> <?php echo $student['guardians']['mother']['name']; ?></em></div>
-                    <div><span>SID</span><i>: </i><em> <?php echo $student['sid']; ?></em></div>
-                    <div><span>DOB</span><i>: </i><em> <?php echo $student['date_of_birth']; ?></em></div>
-                </div>
-
-                <div class="restopmiddle">
+                    <div><span>FATHER'S NAME</span><i>: </i><em> <?php echo $student['guardians']['father']['name']; ?></em></div>
+                    <div><span>MOTHER'S NAME</span><i>: </i><em> <?php echo $student['guardians']['mother']['name']; ?></em></div>
+                    <div><span>STUDENT ID</span><i>: </i><em> <?php echo $student['sid']; ?></em></div>
+                    <div><span>DATE OF BIRTH</span><i>: </i><em> <?php echo $student['date_of_birth']; ?></em></div>
                     <div><span>SHIFT</span><i>: </i><em><?php echo $student['shift_name']; ?></em></div>
                     <div><span>BOARD</span><i>: </i><em>DINAJPUR</em></div>
+                </div>
+
+                <div class="restopleft rgttopleft">
                     <div><span>CLASS</span><i>: </i><em><?php echo $student['level_name']; ?></em></div>
                     <div><span>GROUP</span><i>: </i><em><?php echo $student['group_name']; ?></em></div>
                     <div><span>SECTION</span><i>: </i><em><?php echo $student['section_name']; ?></em></div>
-                </div>
-
-                <div class="restopright">
                     <div><span>ROLL NO</span><i>: </i><em><?php echo $student['roll']; ?></em></div>
-                    <div><span>GPA</span><i>: </i><em><?php echo number_format((float)$student['result']['gpa_with_forth_subject'], $decemal_point, '.', ''); ?></em></div>
+                    <div><span>GPA</span><i>: </i><em><?php echo number_format((float)$student['result']['gpa_with_forth_subject'], $decemal_point, '.', '');?></em></div>
                     <div><span>GRADE</span><i>: </i><em><?php echo $student['result']['grade_with_forth_subject']; ?></em></div>
-                    <div><span>MERIT</span><i>: </i><em><?php if (isset($student['result']['position_in_' . $position])) {
-                                                                echo $student['result']['position_in_' . $position];
-                                                            } ?></em></div>
+                    <div><span>MERIT POSITION</span><i>: </i><em><?php if (isset($student['result']['position_in_' . $position])) {
+                                                                            echo $student['result']['position_in_' . $position];
+                                                                        } ?></em></div>
                 </div><!-- end of restopleft -->
             </div>
 
@@ -73,7 +53,7 @@ $headSign = Configure::read('Result.headSign');
                         <tr>
                             <th class="res1" rowspan="2">CODE</th>
                             <th class="res2 cTitle" rowspan="2">SUBJECT</th>
-                            <th class="res8 examtitle" colspan="14"> <?php echo $exam_title['title']; ?></th>
+                            <th class="res8 examtitle" colspan="14">HALF YEARLY EXAMINATION MARKS</th>
                         </tr>
 
                         <tr>
@@ -84,42 +64,41 @@ $headSign = Configure::read('Result.headSign');
                             <!-- head end !-->
                         </tr>
                         <!-- marge course start !-->
-                            <?php if (isset($student['merge_filter_course'])) { ?>
-                                <?php foreach ($student['merge_filter_course'] as $merge_course) { ?>
-                        <tr>
-                            <td class="res1" rowspan="1"><?php echo $merge_course['1st_course']['course_details']['course_code']; ?></td>
-                            <td class="res2 cTitle" rowspan="1"><?php echo $merge_course['1st_course']['course_details']['course_name']; ?></td>
-
-
-                                        <?php foreach ($merge_course['1st_course']['table_data'] as $table_data) { ?>
-                            <td <?php echo $table_data['style'];
-                                                if (isset($table_data['result'])) {
-                                                    echo 'style="color: red;"';
-                                                } ?>><b><?php echo $table_data['value']; ?></b></td>
-                                        <?php } ?>
-                        </tr>
-
-
+                             <?php if(isset($student['merge_filter_course'])) { ?>
+                            <?php foreach ($student['merge_filter_course'] as $merge_course) { ?>
 
                         <tr>
-                            <td class="res1" rowspan="1"><?php echo $merge_course['2st_course']['course_details']['course_code']; ?></td>
-                            <td class="res2 cTitle" rowspan="1"><?php echo $merge_course['2st_course']['course_details']['course_name']; ?></td>
-                                        <?php foreach ($merge_course['2st_course']['table_data'] as $table_data) { ?>
+                            <td class="res1" rowspan="2"><?php echo $merge_course['1st_course']['course_details']['course_code']; ?></td>
+                            <td class="res2 cTitle" rowspan="2"><?php echo $merge_course['1st_course']['course_details']['course_name']; ?></td>
+
+
+                                    <?php foreach ($merge_course['1st_course']['table_data'] as $table_data) { ?>
                             <td <?php echo $table_data['style'];
-                                                if (isset($table_data['result'])) {
-                                                    echo 'style="color: red;"';
-                                                } ?>><b><?php echo $table_data['value']; ?></b></td>
-                                        <?php } ?>
-                        </tr>
+                                            if (isset($table_data['result'])) {
+                                                echo 'style="color: red;"';
+                                            } ?>><b><?php echo $table_data['value']; ?></b></td>
                                     <?php } ?>
+                        <tr />
+
+                        <tr>
+                            <td class="res1" rowspan="2"><?php echo $merge_course['2st_course']['course_details']['course_code']; ?></td>
+                            <td class="res2 cTitle" rowspan="2"><?php echo $merge_course['2st_course']['course_details']['course_name']; ?></td>
+                                    <?php foreach ($merge_course['2st_course']['table_data'] as $table_data) { ?>
+                            <td <?php echo $table_data['style'];
+                                            if (isset($table_data['result'])) {
+                                                echo 'style="color: red;"';
+                                            } ?>><b><?php echo $table_data['value']; ?></b></td>
+                                    <?php } ?>
+                        <tr />
                                 <?php } ?>
+                                      <?php } ?>
                         <!-- marge course end !-->
 
                         <!-- single course start !-->
                                 <?php foreach ($student['single_filter_course'] as $single_course) { ?>
                         <tr>
-                            <td class="res1" rowspan="1"><?php echo $single_course['course_details']['course_code']; ?></td>
-                            <td class="res2 cTitle" rowspan="2"><?php echo $course_name = isset($student['third_fourth_subjects']['forth'][$single_course['course_details']['course_id']]) ? $single_course['course_details']['course_name'].' (4TH)' : $single_course['course_details']['course_name']?>
+                            <td class="res1" rowspan="2"><?php echo $single_course['course_details']['course_code']; ?></td>
+                            <td class="res2 cTitle" rowspan="2"><?php echo $single_course['course_details']['course_name'];  if($student['forth_subject']==$single_course['course_details']['course_id']){echo ' (4TH)';} ?>
                             </td>
                                     <?php foreach ($single_course['table_data'] as $table_data) { ?>
                             <td <?php echo $table_data['style'];
@@ -127,31 +106,36 @@ $headSign = Configure::read('Result.headSign');
                                                 echo 'style="color: red;"';
                                             } ?>><b><?php echo $table_data['value']; ?></b></td>
                                     <?php } ?>
-                        </tr>
+                        <tr />
 
 
-                                    <?php } ?>
+                                <?php } ?>
                         <!-- single course end !-->
                         <tr class="lastitem">
                             <td>&nbsp;</td>
                             <td class="markTotal" colspan="<?php echo $last_row_colspan; ?>">Total Marks &amp; GPA = </td>
                             <td><b><?php echo $student['result']['marks_with_forth_subject']; ?></b></td>
-                                        <?php if (isset($student['result']['highest_total_in_' . $position])) { ?>
+                                    <?php if (isset($student['result']['highest_total_in_' . $position])) { ?>
                             <td><b><?php echo $student['result']['highest_total_in_' . $position]; ?></b></td>
-                                        <?php } else { ?>
+                                    <?php } else { ?>
                             <td><b></b></td>
-                                        <?php }  ?>
+                                    <?php }  ?>
 
                             <td <?php if ($student['result']['result'] == 'fail') {
-                                                echo 'style="color: red;"';
-                                            } ?>><b><?php echo $student['result']['grade_with_forth_subject']; ?></b></td>
+                                            echo 'style="color: red;"';
+                                        } ?>><b><?php echo $student['result']['grade_with_forth_subject']; ?></b></td>
                             <td <?php if ($student['result']['result'] == 'fail') {
-                                                echo 'style="color: red;"';
-                                            } ?>><b><?php echo number_format((float)$student['result']['gpa_with_forth_subject'], $decemal_point, '.', ''); ?> </b></td>
+                                            echo 'style="color: red;"';
+                                        } ?>><b><?php echo number_format((float)$student['result']['gpa_with_forth_subject'], $decemal_point, '.', '');?>   </b></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+
+
+
+
             <div class="btmcontainer">
                 <div class="overalreport overalreportAll">
                     <h2 class="markTitle">Overall Report</h2>
@@ -163,22 +147,12 @@ $headSign = Configure::read('Result.headSign');
                                 <th class="column2" style="width:100px">M</th>
                                 <th class="column2" style="width:100px">P</th>
                                 <th class="column2" style="width:100px">C</th>
-                                <th class="column2" style="width:130px">TwCA</th>
-                                <th class="column2" style="width:130px">80%</th>
-                                <th class="column2" style="width:130px">GTwCA</th>
+                                <th class="column2" style="width:130px">Total Without CA</th>
+                                <th class="column2" style="width:130px">80% of Total</th>
+                                <th class="column2" style="width:130px">Total With CA</th>
                                 <th class="column3">Gp</th>
                             </tr>
-                            <tr>
-                                <td class="column1" style="width:100px">&nbsp;</td>
-                                <td class="column2" style="width:130px">&nbsp;</td>
-                                <td class="column2">&nbsp;</td>
-                                <td class="column2">&nbsp;</td>
-                                <td class="column2">&nbsp;</td>
-                                <td class="column2">&nbsp;</td>
-                                <td class="column2">&nbsp;</td>
-                                <td class="column2">&nbsp;</td>
-                                <td class="column3">&nbsp;</td>
-                            </tr>
+
                             <tr>
                                 <td class="column1" style="width:100px">&nbsp;</td>
                                 <td class="column2" style="width:130px">&nbsp;</td>
@@ -360,30 +334,32 @@ $headSign = Configure::read('Result.headSign');
                         </tbody>
                     </table>
 
-
-                    <h2 class="markTitle" style="margin-top: 1.1em;"><?php echo $scms_activity_remarks[0]['activity_name']; ?> </h2>
+                    <h2 class="markTitle" style="margin-top: 1.1em;">Extra Activities </h2>
                     <table class="pagetble" style="height:106px;">
                         <tbody>
-                                <?php foreach ($scms_activity_remarks[0]['remark'] as $remark) { ?>
                             <tr>
-                                <td><?php echo $remark['remark_name']; ?></td>
-                                        <?php if (isset($student['activity_data']) && isset($student['activity_data'][$scms_activity_remarks[0]['activity_id']]) && isset($student['activity_data'][$scms_activity_remarks[0]['activity_id']][$remark['activity_remark_id']])) { ?>
+                                <td>Cultural activity/Dramatic performance</td>
                                 <td>&nbsp;√&nbsp;</td>
-                                        <?php } else { ?>
-                                <td></td>
-                                        <?php } ?>
                             </tr>
-                                <?php } ?>
+                            <tr>
+                                <td>Scout/BNCC/Red Crescent</td>
+                                <td>&nbsp;√&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>Games and Sports</td>
+                                <td>&nbsp;√&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>Math/Science Olympiad</td>
+                                <td>&nbsp;√&nbsp;</td>
+                            </tr>
                         </tbody>
                     </table>
-                       <?php if(count($notes)>0) { ?>
-                    <div style='font-size:11px;'><?php echo $notes[0]['new']; ?> : <?php echo $notes[0]['old']; ?></div>
-                       <?php } ?>
                 </div><!-- end of overalreport -->
 
                 <div class="overalreport gpagrading" style="width: 192px;">
                     <h2 class="markTitle">GPA Grading</h2>
-                    <table class="pagetble" style="height:193px!important">
+                    <table class="pagetble" style="height:181px">
                         <tbody>
                             <tr>
                                 <th class="column1">Range of Marks(%)</th>
@@ -429,24 +405,15 @@ $headSign = Configure::read('Result.headSign');
                             </tr>
                         </tbody>
                     </table>
-                    <h2 class="markTitle" style="margin-top: 1.1em;"><?php echo $scms_activity_remarks[1]['activity_name']; ?></h2>
+                    <h2 class="markTitle" style="margin-top: 1.1em;">Achievement</h2>
                     <table class="pagetble" style="height:106px">
                         <tbody>
-                                <?php foreach ($scms_activity_remarks[1]['remark'] as $remark) { ?>
                             <tr>
-                                <td><?php echo $remark['remark_name']; ?></td>
-                                        <?php if (isset($student['activity_data']) && isset($student['activity_data'][$scms_activity_remarks[1]['activity_id']]) && isset($student['activity_data'][$scms_activity_remarks[1]['activity_id']][$remark['activity_remark_id']])) { ?>
-                                <td>&nbsp;√&nbsp;</td>
-                                        <?php } else { ?>
-                                <td></td>
-                                        <?php } ?>
+                                <th align="center" valign="middle">TERM : I</th>
+                                <th align="center" valign="middle"></th>
                             </tr>
-                                <?php } ?>
                         </tbody>
                     </table>
-                       <?php if(count($notes)==2) { ?>
-                    <div style='font-size:11px;'><?php echo $notes[1]['new']; ?> : <?php echo $notes[1]['old']; ?></div>
-                     <?php } ?>
                 </div>
 
 
@@ -460,13 +427,13 @@ $headSign = Configure::read('Result.headSign');
                 <div class="sign-grdn"><b>Signature (Guardian)</b></div>
                 <div class="sign-clsT"><b>Signature (Class Teacher)</b></div>
                 <div class="sign-head">
-                        <?php echo $this->Html->image($headSign, ['alt' => 'logo', 'style' => 'left:32px;bottom:7px']); ?>
+                        <?php echo $this->Html->image('/webroot/uploads/result/head-sign.png', ['alt' => 'logo', "style" => 'left:32px;bottom:7px']); ?>
                     <b>Signature (Head Master)</b>
                 </div>
             </div>
         </div>
         <div class="result-bg">
-                <?php echo $this->Html->image($watermarkLogo, ['width' => '420', 'class' => 'mainBgImage']); ?>
+                <?php echo $this->Html->image('/webroot/uploads/result/certificate-bg.png', ['alt' => 'logo']); ?>
         </div>
     </div>
     <?php } ?>
@@ -513,10 +480,3 @@ $headSign = Configure::read('Result.headSign');
     <?php } ?>
 
 </body>
-<script>
-    document.querySelectorAll('.watermarked').forEach(function (el) {
-        el.dataset.watermark = (el.dataset.watermark + ' ').repeat(3000);
-    });
-
-
-</script>

@@ -4,34 +4,125 @@ namespace Croogo\Core\Config;
 
 use Croogo\Core\Nav;
 
-Nav::add('sidebar', 'Gallery', [
-    'icon' => 'camera',
-    'title' => __d('gallery', 'Gallery'),
+//Nav Menu Students by @shihab
+Nav::add('sidebar', 'Students', [
+    'icon' => 'address-book',
+    'title' => __d('menu', 'Students'),
     'url' => [
         'prefix' => 'admin',
         'plugin' => 'Croogo/Core',
-        'controller' => 'Album',
-        'action' => 'viewAlbum',
+        'controller' => 'Students',
+        'action' => 'index',
     ],
-    'weight' => 70,
+    'weight' => 60,
     'children' => [
-        'ListofAlbums' => [// students is a example but there must be different name for different menu
-            'title' => __d('gallery', 'List of Albums'),
+        'students' => [// students is a example but there must be different name for different menu
+            'title' => __d('menu', 'Students'),
             'url' => [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
-                'controller' => 'Album',
-                'action' => 'viewAlbum',
+                'controller' => 'Students',
+                'action' => 'index',
             ],
             'weight' => 10,
         ],
-        'List of Photos' => [
-            'title' => __d('gallery', 'List of Photos'),
+        'add' => [
+            'title' => __d('menu', 'Add a Student'),
             'url' => [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
-                'controller' => 'Photos',
-                'action' => 'viewPhotos',
+                'controller' => 'Students',
+                'action' => 'add',
+            ],
+            'weight' => 20,
+        ],
+        'Add Mark' => [
+            'title' => __d('menu', 'Add Mark'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'addResult',
+            ],
+            'weight' => 40,
+        ],
+        'Add Quiz Mark' => [
+            'title' => __d('menu', 'Add Quiz Mark'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'addQuizResult',
+            ],
+            'weight' => 50,
+        ],
+        'Add Activity' => [
+            'title' => __d('menu', 'Add Activity'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'addActivityResult',
+            ],
+            'weight' => 50,
+        ],
+        'Number Fordo' => [
+            'title' => __d('menu', 'Number Fordo'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'numberFordo',
+            ],
+            'weight' => 55,
+        ],
+        'promote' => [
+            'title' => __d('menu', 'Promotion List'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'promote',
+            ],
+            'weight' => 60,
+        ],
+        'Temp Student\'s List' => [
+            'title' => __d('menu', 'Temp Student\'s List'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'tindex',
+            ],
+            'weight' => 70,
+        ],
+        'Admission Room' => [
+            'title' => __d('menu', 'Admission Room'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'admissionRoom',
+            ],
+            'weight' => 80,
+        ],
+        'Seat Plan' => [
+            'title' => __d('menu', 'Admission Seat Plan'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'seatplan',
+            ],
+            'weight' => 90,
+        ],
+        'View Seat Plan' => [
+            'title' => __d('menu', 'Admission View Seat Plan'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'viewSeatplan',
             ],
             'weight' => 100,
         ],
@@ -44,16 +135,6 @@ Nav::add('sidebar', 'Gallery', [
                 'action' => 'tutionFees',
             ],
             'weight' => 110,
-        ],
-        'Promotion List' => [
-            'title' => __d('menu', 'Promotion List'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'promotionList',
-            ],
-            'weight' => 115,
         ],
         'Student\'s data Settings' => [
             'title' => __d('menu', 'Student\'s Fields'),
@@ -85,53 +166,95 @@ Nav::add('sidebar', 'Gallery', [
             ],
             'weight' => 140,
         ],
+        'Number Fordo' => [
+            'title' => __d('menu', 'Number Fordo'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Students',
+                'action' => 'numberFordo',
+            ],
+            'weight' => 140,
+        ],
     ],
 ]);
 
-Nav::add('sidebar', 'CMS', [
-    'icon' => 'desktop',
-    'title' => __d('boxes', 'CMS'),
+Nav::add('sidebar', 'Gradings', [
+    'icon' => 'bookmark',
+    'title' => __d('menu', 'Gradings'),
     'url' => [
         'prefix' => 'admin',
         'plugin' => 'Croogo/Core',
-        'controller' => 'Cms',
-        'action' => 'boxes',
+        'controller' => 'Gradings',
+        'action' => 'index',
     ],
-    'weight' => 80,
+    'weight' => 61,
+]);
+Nav::add('sidebar', 'Result', [
+    'icon' => 'list-ol',
+    'title' => __d('menu', 'Result'),
+    'url' => [
+        'prefix' => 'admin',
+        'plugin' => 'Croogo/Core',
+        'controller' => 'Results',
+        'action' => 'index',
+    ],
+    'weight' => 62,
     'children' => [
-        'ListofBoxes' => [
-            'title' => __d('boxes', 'List of Boxes'),
+        'Result' => [
+            'title' => __d('menu', 'Result'),
             'url' => [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
-                'controller' => 'Cms',
-                'action' => 'Boxes',
+                'controller' => 'Results',
+                'action' => 'index',
             ],
             'weight' => 10,
         ],
-        'ListofConfigs' => [
-            'title' => __d('boxes', 'List of Configs'),
+        'View Result' => [
+            'title' => __d('menu', 'View Result'),
             'url' => [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
-                'controller' => 'Cms',
-                'action' => 'pageConfig',
+                'controller' => 'Results',
+                'action' => 'viewResult',
             ],
-            'weight' => 101,
+            'weight' => 20,
         ],
-        'QuickLink' => [
-            'title' => __d('boxes', 'Quick Links'),
+        'Merge Result' => [
+            'title' => __d('menu', 'Merge Result'),
             'url' => [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
-                'controller' => 'Cms',
-                'action' => 'quickLink',
+                'controller' => 'Results',
+                'action' => 'mergeResult',
             ],
-            'weight' => 111,
+            'weight' => 30,
         ],
+        'View Merge Result' => [
+            'title' => __d('menu', 'View Merge Result'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Results',
+                'action' => 'viewMergeResult',
+            ],
+            'weight' => 40,
+        ],
+        'Result Template' => [
+            'title' => __d('menu', 'Result Template'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Results',
+                'action' => 'indexTemplate',
+            ],
+            'weight' => 50,
+        ]
     ],
 ]);
 
+//Nav Menu Gallery by @shihab
 Nav::add('sidebar', 'Setup', [
     'icon' => 'cogs',
     'title' => __d('Setup', 'Setup'),
@@ -141,7 +264,7 @@ Nav::add('sidebar', 'Setup', [
         'controller' => 'Setup',
         'action' => 'index',
     ],
-    'weight' => 90,
+    'weight' => 100,
     'children' => [
         'Facuties' => [
             'title' => __d('Setup', 'Facuties'),
@@ -372,16 +495,83 @@ Nav::add('sidebar', 'Setup', [
                 ],
             ],
         ],
-        'Gradings' => [
-            'title' => __d('menu', 'Gradings'),
+    ],
+]);
+
+Nav::add('sidebar', 'Teachers', [
+    'icon' => 'id-badge',
+    'title' => __d('menu', 'Teachers'),
+    'url' => [
+        'prefix' => 'admin',
+        'plugin' => 'Croogo/Core',
+        'controller' => 'Teachers',
+        'action' => 'index',
+    ],
+    'weight' => 80,
+    'children' => [
+        'Teachers' => [
+            'title' => __d('menu', 'Teachers'),
             'url' => [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
-                'controller' => 'Gradings',
+                'controller' => 'Teachers',
                 'action' => 'index',
             ],
-            'weight' => 100,
+            'weight' => 20,
         ],
+        'Assign Teachers' => [
+            'title' => __d('menu', 'Assign Teachers'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Teachers',
+                'action' => 'assignTeacher',
+            ],
+            'weight' => 10,
+        ],
+        'Designations' => [
+            'title' => __d('menu', 'Designations'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Teachers',
+                'action' => 'designation',
+            ],
+            'weight' => 30,
+        ],
+    ],
+]);
+Nav::add('sidebar', 'Attendance', [
+    'icon' => 'calendar-check',
+    'title' => __d('menu', 'Attendance'),
+    'url' => [
+        'prefix' => 'admin',
+        'plugin' => 'Croogo/Core',
+        'controller' => 'Attendance',
+        'action' => 'index',
+    ],
+    'weight' => 70,
+    'children' => [
+        'Attendance' => [
+            'title' => __d('menu', 'Attendance'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Attendance',
+                'action' => 'index',
+            ],
+            'weight' => 10,
+        ],
+        'Device Attendence' => [
+            'title' => __d('menu', 'Device Attendence'),
+            'url' => [
+                'prefix' => 'admin',
+                'plugin' => 'Croogo/Core',
+                'controller' => 'Attendance',
+                'action' => 'device_attendence',
+            ],
+            'weight' => 20,
+        ]
     ],
 ]);
 
@@ -394,7 +584,7 @@ Nav::add('sidebar', 'SMS Panel', [
         'controller' => 'Sms',
         'action' => 'index',
     ],
-    'weight' => 100,
+    'weight' => 110,
     'children' => [
         'General SMS' => [
             'title' => __d('menu', 'General SMS'),
@@ -428,325 +618,23 @@ Nav::add('sidebar', 'SMS Panel', [
         ],
     ],
 ]);
-
-Nav::add('sidebar', 'Students', [
-    'icon' => 'address-book',
-    'title' => __d('menu', 'Students'),
+Nav::add('sidebar', 'Staffs', [
+    'icon' => 'users',
+    'title' => __d('menu', 'Staffs'),
     'url' => [
         'prefix' => 'admin',
         'plugin' => 'Croogo/Core',
-        'controller' => 'Students',
+        'controller' => 'Staffs',
         'action' => 'index',
     ],
-    'weight' => 110,
-    'children' => [
-        'students' => [// students is a example but there must be different name for different menu
-            'title' => __d('menu', 'Students'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'index',
-            ],
-            'weight' => 10,
-        ],
-        'add' => [
-            'title' => __d('menu', 'Add a Student'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'add',
-            ],
-            'weight' => 20,
-        ],
-        'Add Mark' => [
-            'title' => __d('menu', 'Add Mark'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'addResult',
-            ],
-            'weight' => 40,
-        ],
-        'Add Quiz Mark' => [
-            'title' => __d('menu', 'Add Quiz Mark'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'addQuizResult',
-            ],
-            'weight' => 50,
-        ],
-        'Add Activity' => [
-            'title' => __d('menu', 'Add Activity'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'addActivityResult',
-            ],
-            'weight' => 50,
-        ],
-        'Promotion' => [
-            'title' => __d('menu', 'Promotion'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'promotion',
-            ],
-            'weight' => 60,
-            'children' => [
-                'Promotion' => [
-                    'title' => __d('menu', 'Promotion'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Students',
-                        'action' => 'promotion',
-                    ],
-                    'weight' => 10,
-                ],
-                'Promotion Template' => [
-                    'title' => __d('menu', 'Promotion Template'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Students',
-                        'action' => 'promotionTemplate',
-                    ],
-                    'weight' => 20,
-                ],
-                'Promotion Log' => [
-                    'title' => __d('menu', 'Promotion Log'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Students',
-                        'action' => 'promotionLog',
-                    ],
-                    'weight' => 30,
-                ],
-            ],
-        ],
-        'Temp Student\'s List' => [
-            'title' => __d('menu', 'Temp Student\'s List'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'tindex',
-            ],
-            'weight' => 70,
-        ],
-        'Admission Room' => [
-            'title' => __d('menu', 'Admission Room'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'admissionRoom',
-            ],
-            'weight' => 80,
-        ],
-        'Seat Plan' => [
-            'title' => __d('menu', 'Admission Seat Plan'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'seatplan',
-            ],
-            'weight' => 90,
-        ],
-        'View Seat Plan' => [
-            'title' => __d('menu', 'Admission View Seat Plan'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'viewSeatplan',
-            ],
-            'weight' => 100,
-        ],
-        'Tution Fees' => [
-            'title' => __d('menu', 'Tution Fees'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'tutionFees',
-            ],
-            'weight' => 110,
-        ],
-        'Promotion List' => [
-            'title' => __d('menu', 'Promotion List'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'promotionList',
-            ],
-            'weight' => 115,
-        ],
-        'Student\'s data Settings' => [
-            'title' => __d('menu', 'Student\'s Fields'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'dataSettings',
-            ],
-            'weight' => 120,
-        ],
-        'Student\'s data Count' => [
-            'title' => __d('menu', 'Student\'s Block Add'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'dataCount',
-            ],
-            'weight' => 130,
-        ],
-        'Student\'s datas' => [
-            'title' => __d('menu', 'Student\'s All Blocks'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'datas',
-            ],
-            'weight' => 140,
-        ],
-    ],
+    'weight' => 90,
 ]);
 
-Nav::add('sidebar', 'Attendance', [
-    'icon' => 'calendar-check',
-    'title' => __d('menu', 'Attendance'),
-    'url' => [
-        'prefix' => 'admin',
-        'plugin' => 'Croogo/Core',
-        'controller' => 'Attendance',
-        'action' => 'index',
-    ],
-    'weight' => 120,
-    'children' => [
-        'Attendance' => [
-            'title' => __d('menu', 'Attendance'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Attendance',
-                'action' => 'index',
-            ],
-            'weight' => 10,
-        ],
-        'Device Attendence' => [
-            'title' => __d('menu', 'Device Attendence'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Attendance',
-                'action' => 'deviceAttendence',
-            ],
-            'weight' => 20,
-        ],
-        'Device Log' => [
-            'title' => __d('menu', 'Device Log'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Attendance',
-                'action' => 'deviceLog',
-            ],
-            'weight' => 30,
-        ]
-    ],
-]);
-
-Nav::add('sidebar', 'Result', [
-    'icon' => 'list-ol',
-    'title' => __d('menu', 'Result'),
-    'url' => [
-        'prefix' => 'admin',
-        'plugin' => 'Croogo/Core',
-        'controller' => 'Results',
-        'action' => 'index',
-    ],
-    'weight' => 130,
-    'children' => [
-        'Result' => [
-            'title' => __d('menu', 'Result'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Results',
-                'action' => 'index',
-            ],
-            'weight' => 10,
-        ],
-        'View Result' => [
-            'title' => __d('menu', 'View Result'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Results',
-                'action' => 'viewResult',
-            ],
-            'weight' => 20,
-        ],
-        'Merge Result' => [
-            'title' => __d('menu', 'Merge Result'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Results',
-                'action' => 'mergeResult',
-            ],
-            'weight' => 30,
-        ],
-        'View Merge Result' => [
-            'title' => __d('menu', 'View Merge Result'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Results',
-                'action' => 'viewMergeResult',
-            ],
-            'weight' => 40,
-        ],
-        'Result Template' => [
-            'title' => __d('menu', 'Result Template'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Results',
-                'action' => 'indexTemplate',
-            ],
-            'weight' => 50,
-        ],
-        'Number Fordo' => [
-            'title' => __d('menu', 'Number Fordo'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'numberFordo',
-            ],
-            'weight' => 60,
-        ],
-    ],
-]);
-
+//Sidebar for ACcounts and HR
 Nav::add('sidebar', 'Accounts', [
     'icon' => 'university',
     'title' => __d('menu', 'Accounts'),
-    'weight' => 140,
+    'weight' => 150,
     'url' => [
         'prefix' => 'admin',
         'plugin' => 'Croogo/Core',
@@ -780,82 +668,9 @@ Nav::add('sidebar', 'Accounts', [
                 'prefix' => 'admin',
                 'plugin' => 'Croogo/Core',
                 'controller' => 'Accounts',
+                'action' => 'transactions',
             ],
             'weight' => 30,
-            'children' => [
-                'Debit' => [
-                    'title' => __d('menu', 'Debit'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Accounts',
-                    ],
-                    'weight' => 10,
-                    'children' => [
-                        'addDebit' => [
-                            'title' => __d('menu', 'Add Debit'),
-                            'url' => [
-                                'prefix' => 'admin',
-                                'plugin' => 'Croogo/Core',
-                                'controller' => 'Accounts',
-                                'action' => 'addDebit',
-                            ],
-                            'weight' => 10,
-                        ],
-                        'List of Debit' => [
-                            'title' => __d('menu', 'List of Debit'),
-                            'url' => [
-                                'prefix' => 'admin',
-                                'plugin' => 'Croogo/Core',
-                                'controller' => 'Accounts',
-                                'action' => 'debitList',
-                            ],
-                            'weight' => 20,
-                        ],
-                    ],
-                ],
-                'Credit' => [
-                    'title' => __d('menu', 'Credit'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Accounts',
-                    ],
-                    'weight' => 20,
-                    'children' => [
-                        'addCredit' => [
-                            'title' => __d('menu', 'Add Credit'),
-                            'url' => [
-                                'prefix' => 'admin',
-                                'plugin' => 'Croogo/Core',
-                                'controller' => 'Accounts',
-                                'action' => 'addCredit',
-                            ],
-                            'weight' => 10,
-                        ],
-                        'List of Credit' => [
-                            'title' => __d('menu', 'List of Credit'),
-                            'url' => [
-                                'prefix' => 'admin',
-                                'plugin' => 'Croogo/Core',
-                                'controller' => 'Accounts',
-                                'action' => 'creditList',
-                            ],
-                            'weight' => 20,
-                        ],
-                        'Unpaid Vouchers' => [
-                            'title' => __d('menu', 'Unpaid Vouchers'),
-                            'url' => [
-                                'prefix' => 'admin',
-                                'plugin' => 'Croogo/Core',
-                                'controller' => 'Accounts',
-                                'action' => 'unpaidVouchers',
-                            ],
-                            'weight' => 30,
-                        ],
-                    ],
-                ],
-            ],
         ],
         'Additional Fees' => [
             'title' => __d('menu', 'Additionals'),
@@ -887,13 +702,13 @@ Nav::add('sidebar', 'Accounts', [
                     ],
                     'weight' => 30,
                 ],
-                'Individual Fees' => [
-                    'title' => __d('menu', 'Individual Fees'),
+                'editGeneratedAdditionals' => [
+                    'title' => __d('menu', 'Edit Generated Fees'),
                     'url' => [
                         'prefix' => 'admin',
                         'plugin' => 'Croogo/Core',
                         'controller' => 'Accounts',
-                        'action' => 'individualFees',
+                        'action' => 'editGeneratedAdditionals',
                     ],
                     'weight' => 40,
                 ],
@@ -928,26 +743,6 @@ Nav::add('sidebar', 'Accounts', [
                     ],
                     'weight' => 20,
                 ],
-                'voucher Generate' => [
-                    'title' => __d('menu', 'Voucher Generate'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Accounts',
-                        'action' => 'voucherGenerate',
-                    ],
-                    'weight' => 30,
-                ],
-                'Indivisul Voucher' => [
-                    'title' => __d('menu', 'Indivisul Voucher'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Accounts',
-                        'action' => 'indivisulVoucher',
-                    ],
-                    'weight' => 40,
-                ],
             ],
         ],
         'School Fees' => [
@@ -970,23 +765,23 @@ Nav::add('sidebar', 'Accounts', [
             ],
             'weight' => 60,
             'children' => [
-                'Transaction Report' => [
-                    'title' => __d('menu', 'Transaction Statement'),
+                'Credit Report' => [
+                    'title' => __d('menu', 'Credit Report'),
                     'url' => [
                         'prefix' => 'admin',
                         'plugin' => 'Croogo/Core',
                         'controller' => 'Accounts',
-                        'action' => 'transactionStatement',
+                        'action' => 'creditReport',
                     ],
                     'weight' => 10,
                 ],
-                'Payment Details' => [
-                    'title' => __d('menu', 'Payment Details'),
+                'Debit Report' => [
+                    'title' => __d('menu', 'Debit Report'),
                     'url' => [
                         'prefix' => 'admin',
                         'plugin' => 'Croogo/Core',
                         'controller' => 'Accounts',
-                        'action' => 'paymentDetails',
+                        'action' => 'debitReport',
                     ],
                     'weight' => 20,
                 ],
@@ -999,26 +794,6 @@ Nav::add('sidebar', 'Accounts', [
                         'action' => 'balanceReport',
                     ],
                     'weight' => 30,
-                ],
-                'Voucher Statement' => [
-                    'title' => __d('menu', 'Voucher Statement'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Accounts',
-                        'action' => 'voucherStatement',
-                    ],
-                    'weight' => 40,
-                ],
-                'Due Report' => [
-                    'title' => __d('menu', 'Due Report'),
-                    'url' => [
-                        'prefix' => 'admin',
-                        'plugin' => 'Croogo/Core',
-                        'controller' => 'Accounts',
-                        'action' => 'dueReport',
-                    ],
-                    'weight' => 50,
                 ],
             ],
         ],
@@ -1076,6 +851,7 @@ Nav::add('sidebar', 'Accounts', [
     ],
 ]);
 
+//Nav Menu Hr by @akash
 Nav::add('sidebar', 'Core HR', [
     'icon' => 'database',
     'title' => __d('menu', 'Core HR'),
@@ -1085,7 +861,7 @@ Nav::add('sidebar', 'Core HR', [
         'controller' => 'Hrs',
         'action' => 'index',
     ],
-    'weight' => 150,
+    'weight' => 160,
     'children' => [
         'Shift' => [
             'title' => __d('menu', 'Shift'),
@@ -1201,74 +977,6 @@ Nav::add('sidebar', 'Core HR', [
     ],
 ]);
 
-Nav::add('sidebar', 'Admit Card', [
-    'icon' => 'address-card',
-    'title' => __d('admit', 'Admit Card'),
-    'url' => [
-        'prefix' => 'admin',
-        'plugin' => 'Croogo/Core',
-        'controller' => 'Admit',
-        'action' => 'index',
-    ],
-    'weight' => 160,
-    'children' => [
-        'Admit Cards' => [
-            'title' => __d('admit', 'List of Admit Cards'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Admit',
-                'action' => 'index',
-            ],
-            'weight' => 10,
-        ],
-        'Bench Slip' => [
-            'title' => __d('admit', 'Bench Slip'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Admit',
-                'action' => 'slip',
-            ],
-            'weight' => 100,
-        ],
-    ],
-]);
-
-Nav::add('sidebar', 'Admissions', [
-    'icon' => 'bookmark',
-    'title' => __d('menu', 'Admissions'),
-    'url' => [
-        'prefix' => 'admin',
-        'plugin' => 'Croogo/Core',
-        'controller' => 'Students',
-        'action' => 'tindex',
-    ],
-    'weight' => 170,
-    'children' => [
-        'Admissions List' => [
-            'title' => __d('menu', 'Admissions'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'tindex',
-            ],
-            'weight' => 20,
-        ],
-        'Payment List' => [
-            'title' => __d('menu', 'Payment List'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Students',
-                'action' => 'paymentList',
-            ],
-            'weight' => 20,
-        ],
-    ],
-]);
-
 Nav::add('sidebar', 'Employee', [
     'icon' => 'users',
     'title' => __d('menu', 'Employee'),
@@ -1277,7 +985,7 @@ Nav::add('sidebar', 'Employee', [
         'plugin' => 'Croogo/Core',
         'controller' => 'Employees',
     ],
-    'weight' => 180,
+    'weight' => 140,
     'children' => [
         'Profile' => [
             'title' => __d('menu', 'Profile'),
@@ -1340,82 +1048,7 @@ Nav::add('sidebar', 'Employee', [
             ],
             'weight' => 30,
         ],
-        'inactiveEmployees' => [
-            'title' => __d('menu', 'Inactive Employees'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Employees',
-                'action' => 'inactiveEmployees',
-            ],
-            'weight' => 40,
-        ], 'exEmployees' => [
-            'title' => __d('menu', 'EX-Employees'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Employees',
-                'action' => 'exEmployees',
-            ],
-            'weight' => 50,
-        ],
     ],
-]);
-
-Nav::add('sidebar', 'Teachers', [
-    'icon' => 'id-badge',
-    'title' => __d('menu', 'Teachers'),
-    'url' => [
-        'prefix' => 'admin',
-        'plugin' => 'Croogo/Core',
-        'controller' => 'Teachers',
-        'action' => 'index',
-    ],
-    'weight' => 190,
-    'children' => [
-        'Teachers' => [
-            'title' => __d('menu', 'Teachers'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Teachers',
-                'action' => 'index',
-            ],
-            'weight' => 20,
-        ],
-        'Assign Teachers' => [
-            'title' => __d('menu', 'Assign Teachers'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Teachers',
-                'action' => 'assignTeacher',
-            ],
-            'weight' => 10,
-        ],
-        'Designations' => [
-            'title' => __d('menu', 'Designations'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Core',
-                'controller' => 'Teachers',
-                'action' => 'designation',
-            ],
-            'weight' => 30,
-        ],
-    ],
-]);
-
-Nav::add('sidebar', 'Staffs', [
-    'icon' => 'users',
-    'title' => __d('menu', 'Staffs'),
-    'url' => [
-        'prefix' => 'admin',
-        'plugin' => 'Croogo/Core',
-        'controller' => 'Staffs',
-        'action' => 'index',
-    ],
-    'weight' => 200,
 ]);
 
 Nav::add('sidebar', 'Certificates', [
@@ -1427,7 +1060,7 @@ Nav::add('sidebar', 'Certificates', [
         'controller' => 'Certificates',
         'action' => 'index',
     ],
-    'weight' => 210,
+    'weight' => 160,
     'children' => [
         'Configuration' => [
             'title' => __d('menu', 'Configuration'),
@@ -1514,7 +1147,7 @@ Nav::add('sidebar', 'Library Section', [
         'controller' => 'Library',
         'action' => 'index',
     ],
-    'weight' => 220,
+    'weight' => 180,
     'children' => [
         'Books' => [
             'title' => __d('menu', 'Books'),

@@ -33,12 +33,7 @@
         font-style: normal;
     }
 </style>
-<?php
-// pr($departments);
-// echo "<hr>";
-// pr($employees);
-// die;
-?>
+
 <div class="untree_co-section">
     <div class="container">
         <div class="row justify-content-center mb-5">
@@ -96,9 +91,7 @@
                                     <div class="col-md-9">
                                         <h5><?= $employee['name'] ?></h5>
                                         <p>
-                                            <?php if (isset($employee['degree'])) { ?>
                                             <i class="emp_degree"><?= $employee['degree'] ?></i>
-                                            <?php }?>
                                             <i><?= $employee['designation'] ?></i>
                                             <span style="display:block"><?= $employee['job_institute'] ?></span>
                                             <span style="display:block"><?= $employee['email'] ?></span>

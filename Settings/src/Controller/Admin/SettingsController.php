@@ -94,7 +94,7 @@ class SettingsController extends AppController
         }
 
         $settings = $this->Settings->find('all', [
-            'order' => 'Settings.id ASC',
+            'order' => 'Settings.weight ASC',
             'conditions' => [
                 'Settings.key LIKE' => $prefix . '.%',
                 'Settings.editable' => 1,

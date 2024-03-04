@@ -140,7 +140,7 @@ $roll = isset($roll) ? $roll : '';
         var shift_id = $("#shift_id").val();
 
         $.ajax({
-            url: 'Ajax/getLevelSectionAjax',
+            url: 'getLevelSectionAjax',
             cache: false,
             type: 'GET',
             dataType: 'HTML',

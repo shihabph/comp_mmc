@@ -22,6 +22,6 @@ $links = $link
     $social_title = $link["title"];
     $fontawesome_class = strtolower($social_title);
     $link_url = urldecode($link["link"]);
-    ?>
+?>
     <a href="<?= $link_url ?>" class="mx-1" target="_blank"><i class="fa fa-<?= $fontawesome_class ?> circle_social <?= $fontawesome_class ?>"></i></a>
 <?php } ?>

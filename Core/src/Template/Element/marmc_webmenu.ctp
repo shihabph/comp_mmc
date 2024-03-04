@@ -282,7 +282,6 @@
     ]);
     ?>
 </nav>
-
 <script>
     $(document).one('ready', function() {
         $('#menu-wrap').prepend('<div id="menu-trigger"><i class="fa fa-bars mr-2"></i></div>');
@@ -291,6 +290,7 @@
         });
     });
 </script>
+
 <script>
     var elementsWithBgDarkClass = document.querySelectorAll(".bg-dark");
     var elementsWithDropdownClass = document.querySelectorAll(".dropdown-toggle");

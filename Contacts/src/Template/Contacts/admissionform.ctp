@@ -12,24 +12,16 @@
 </head>
 
 <?php
-
 use Cake\Core\Configure;
-
 $captchaPublic = Configure::read('Service.recaptcha_public_key');
 $captchaSecret = Configure::read('Service.recaptcha_private_key');
 
 
 $this->Form->unlockField('id');
 $this->Form->unlockField('name');
-$this->Form->unlockField('name_bn');
-
-
-
-
-$this->Form->unlockField('present_location');
-$this->Form->unlockField('permanent_location');
+$this->Form->unlockField('location');
 $this->Form->unlockField('mobile');
-$this->Form->unlockField('campus');
+$this->Form->unlockField('quota');
 $this->Form->unlockField('dob');
 $this->Form->unlockField('shift');
 $this->Form->unlockField('level');
@@ -40,22 +32,7 @@ $this->Form->unlockField('status');
 $this->Form->unlockField('version');
 $this->Form->unlockField('image_name');
 $this->Form->unlockField('fname');
-$this->Form->unlockField('fname_bn');
-$this->Form->unlockField('foccupation');
-$this->Form->unlockField('fmobile');
-
-
 $this->Form->unlockField('mname');
-$this->Form->unlockField('mname_bn');
-$this->Form->unlockField('moccupation');
-$this->Form->unlockField('mmobile');
-
-$this->Form->unlockField('religion');
-$this->Form->unlockField('nationality');
-$this->Form->unlockField('pre_school');
-$this->Form->unlockField('pre_class');
-$this->Form->unlockField('quota');
-
 $this->Form->unlockField('status');
 $this->Form->unlockField('g-recaptcha-response');
 
@@ -106,7 +83,19 @@ $this->Form->unlockField('g-recaptcha-response');
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <p><?= __d('students', 'Residential Info*') ?></p>
+                                </div>
+                                <div class="col-lg-9 row2Field">
+                                    <select class="form-control" name="quota">
+                                        <option class="text-center"><?= __d('students', '-- Choose --') ?></option>
+                                        <option value="Resident"><?= __d('students', 'Resident') ?></option>
+                                        <option value="Non-Resident"><?= __d('students', 'Non-Resident') ?></option>
 
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="row mb-3">
                                 <div class="col-lg-2">
@@ -119,18 +108,37 @@ $this->Form->unlockField('g-recaptcha-response');
 
                             <div class="row mb-3">
                                 <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Student\'s Name(In English)') ?> </p>
+                                    <p class="label-font"><?= __d('students', 'Student\'s Name') ?> </p>
                                 </div>
                                 <div class="col-lg-10">
-                                    <input name="name" type="text" class="form-control" placeholder="Student Name(In English)">
+                                    <input name="name" type="text" class="form-control" placeholder="Student Name">
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Student\'s Name(In Bangla)') ?> </p>
+                                    <p class="label-font"><?= __d('students', 'Father\'s Name') ?> </p>
                                 </div>
                                 <div class="col-lg-10">
-                                    <input name="name_bn" type="text" class="form-control" placeholder="Student Name(In Bangla)">
+                                    <input name="fname" type="text" class="form-control" placeholder="Father Name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <p class="label-font"><?= __d('students', 'Mother\'s Name') ?> </p>
+                                </div>
+                                <div class="col-lg-10">
+                                    <input name="mname" type="text" class="form-control" placeholder="Mother Name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-3">
+                                    <p class="label-font"><?= __d('students', 'Contact Mobile No.') ?></p>
+                                </div>
+                                <div class="col-lg-9 row2Field">
+                                    <input name="mobile" type="tel" class="form-control" placeholder="Mobile No">
                                 </div>
                             </div>
 
@@ -144,180 +152,11 @@ $this->Form->unlockField('g-recaptcha-response');
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p><?= __d('students', 'Residential Info') ?></p>
-                                </div>
-                                <div class="col-lg-9 row2Field">
-                                    <select class="form-control" name="resident">
-                                        <option class="text-center"><?= __d('students', '-- Choose --') ?></option>
-                                        <option value="Resident"><?= __d('students', 'Resident') ?></option>
-                                        <option value="Non-Resident"><?= __d('students', 'Non-Resident') ?></option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p><?= __d('students', 'Campus') ?></p>
-                                </div>
-                                <div class="col-lg-9 row2Field">
-                                    <select class="form-control" name="campus">
-                                        <option value="" class="text-center"><?= __d('students', '-- Choose --') ?></option>
-                                        <option value="Campus 1"><?= __d('students', 'Campus 1') ?></option>
-                                        <option value="Campus 2"><?= __d('students', 'Campus 2') ?></option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Father\'s Name(In English)') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="fname" type="text" class="form-control" placeholder="Father Name(In English)">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Father\'s Name(In Bangla)') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="fname_bn" type="text" class="form-control" placeholder="Father Name(In Bangla)">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Father\'s Occupation') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="foccupation" type="text" class="form-control" placeholder="Father Occupation">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Father\'s Mobile No') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="fmobile" type="text" class="form-control" placeholder="Father Mobile No">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Mother\'s Name(In English)') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="mname" type="text" class="form-control" placeholder="Mother Name(In English)">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Mother\'s Name(In Bangla)') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="mname_bn" type="text" class="form-control" placeholder="Mother Name(In Bangla)">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Mother\'s Occupation') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="moccupation" type="text" class="form-control" placeholder="Mother Occupation">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Mother\'s Mobile No') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="mmobile" type="text" class="form-control" placeholder="Mother Mobile No">
-                                </div>
-                            </div>
-
-
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Religion') ?> </p>
-                                </div>
-                                <div class="col-lg-9 row2Field">
-                                    <select class="form-control" name="religion">
-                                        <option value="" class="text-center"><?= __d('students', '-- Choose --') ?></option>
-                                        <option value="Islam"><?= __d('students', 'Islam') ?></option>
-                                        <option value="Hindu"><?= __d('students', 'Hindu') ?></option>
-                                        <option value="Christian"><?= __d('students', 'Christian') ?></option>
-                                        <option value="Buddhist"><?= __d('students', 'Buddhist') ?></option>
-                                        <option value="Others"><?= __d('students', 'Others') ?></option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Nationality') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="nationality" type="text" class="form-control" placeholder="Nationality">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Previous School') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="pre_school" type="text" class="form-control" placeholder="Previous School">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2">
-                                    <p class="label-font"><?= __d('students', 'Previous Class') ?> </p>
-                                </div>
-                                <div class="col-lg-10">
-                                    <input name="pre_class" type="text" class="form-control" placeholder="Previous Class">
-                                </div>
-                            </div>
-
-
-                            <div class="row mb-3">
-                                <div class="col-lg-3">
-                                    <p class="label-font"><?= __d('students', 'Contact Mobile No.') ?></p>
-                                </div>
-                                <div class="col-lg-9 row2Field">
-                                    <input name="mobile" type="tel" class="form-control" placeholder="Mobile No">
-                                </div>
-                            </div>
-
-
-
-                            <div class="row mb-3">
-                                <div class="col-lg-3">
-                                    <p class="label-font"><?= __d('students', 'Present Address') ?></p>
-                                </div>
-                                <div class="col-lg-9 row2Field">
-                                    <textarea name="present_location" class="form-control" rows="2" placeholder="Present Address" id="add1" required></textarea>
-                                </div>
-
-                            </div>
-
-                            <div>
-                                <input type="checkbox" id="copyAddresses">
-                                <label style="color: green" for="copyAddresses" class="black11i">Same As Present Address</label>
-                            </div>
-
-                            <div class="row mb-3">
                                 <div class="col-lg-3">
                                     <p class="label-font"><?= __d('students', 'Permanent Address') ?></p>
                                 </div>
                                 <div class="col-lg-9 row2Field">
-                                    <textarea name="permanent_location" class="form-control" rows="2" placeholder="Permanent Address" id="add11" required></textarea>
+                                    <textarea name="location" class="form-control" rows="2" placeholder="Permanent Address"></textarea>
                                 </div>
                             </div>
 
@@ -326,12 +165,12 @@ $this->Form->unlockField('g-recaptcha-response');
 
                         <div class="col-lg-3">
                             <div class="center">
-                                <div class="avatar-wrapper form-avatar" id="avatar">
+                                <div class="avatar-wrapper" id="avatar">
                                     <img class="profile-pic" src="" />
                                     <div class="upload-button">
                                         <i class="fa fa-arrow-circle-up" aria-hidden="true"><?= __d('students', 'Uplaoad') ?></i>
                                     </div>
-                                    <input name="image_name" class="file-upload" type="file" accept="image/*" required />
+                                    <input name="image_name" class="file-upload" type="file" accept="image/*" />
                                 </div>
                             </div>
                         </div>
@@ -364,15 +203,6 @@ $this->Form->unlockField('g-recaptcha-response');
 </html>
 
 <script>
-    document.getElementById('copyAddresses').addEventListener('change', function() {
-        if (this.checked) {
-            // Copy present address to permanent address
-            document.getElementById('add11').value = document.getElementById('add1').value;
-        } else {
-            // Clear permanent address if the checkbox is unchecked
-            document.getElementById('add11').value = '';
-        }
-    });
     $(document).ready(function() {
         var readURL = function(input) {
             if (input.files && input.files[0]) {
@@ -393,7 +223,6 @@ $this->Form->unlockField('g-recaptcha-response');
         $(".upload-button").on("click", function() {
             $(".file-upload").click();
         });
-
     });
     var form = $(".education").html();
 
@@ -522,20 +351,4 @@ $this->Form->unlockField('g-recaptcha-response');
             }
         });
     }
-
-    // Get all the required fields
-    const requiredFields = document.querySelectorAll('input[required], select[required]');
-
-    requiredFields.forEach(field => {
-        const label = field.closest('.row').querySelector('.label-font , .label-font13');
-        if (label) {
-            const asterisk = document.createElement('span');
-            asterisk.className = 'required';
-            asterisk.innerHTML = '*';
-            asterisk.style.color = 'red';
-            asterisk.style.marginRight = '2px';
-            label.prepend(asterisk);
-        }
-
-    });
 </script>

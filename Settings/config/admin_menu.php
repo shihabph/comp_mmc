@@ -141,31 +141,6 @@ Nav::add('sidebar', 'settings', [
             ],
             'weight' => 110,
         ],
-        'Recipt' => [
-            'title' => __d('croogo', 'Recipt'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Settings',
-                'controller' => 'Settings',
-                'action' => 'prefix',
-                'Recipt',
-            ],
-            'weight' => 120,
-        ],
-        'SMS' => [
-            'title' => __d('croogo', 'SMS'),
-            'url' => [
-                'prefix' => 'admin',
-                'plugin' => 'Croogo/Settings',
-                'controller' => 'Settings',
-                'action' => 'prefix',
-                'SMS',
-            ],
-            'weight' => 130,
-        ],
 
     ],
 ]);
-
-
-
